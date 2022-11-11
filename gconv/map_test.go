@@ -26,7 +26,7 @@ func TestMap2KvPairs(t *testing.T) {
 }
 
 func TestGetMapKeys(t *testing.T) {
-	got := GetMapKeys(map[int]float32{100: 1.0})
+	got := MapKeys(map[int]float32{100: 1.0})
 	t.Logf("got map keys: %v", got)
 }
 
@@ -87,7 +87,7 @@ func TestStructToMap(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := StructToMap(tt.args.in)
+			got, err := MapFromStruct(tt.args.in)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("StructToMap() error = %v, wantErr %v", err, tt.wantErr)
 				return

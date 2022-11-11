@@ -29,11 +29,11 @@ func Map2KvPairs[T1, T2 comparable](in map[T1]T2) []any {
 	return out
 }
 
-// GetMapKeys [T1, T2 comparable]
+// MapKeys [T1, T2 comparable]
 //  @Description: 提取map的键
 //  @param in
 //  @return []T1
-func GetMapKeys[T1, T2 comparable](in map[T1]T2) []T1 {
+func MapKeys[T1, T2 comparable](in map[T1]T2) []T1 {
 	out := make([]T1, 0, len(in))
 	for k := range in {
 		out = append(out, k)
@@ -97,13 +97,13 @@ func MapVal2Any[T1, T2 comparable](in map[T1]T2) map[T1]any {
 }
 
 //
-// StructToMap
+// MapFromStruct
 //  @Description: 将一级结构体转换成map, 且只支持一级。如果有深层结构嵌套请使用deepcopy库
 //  @param in 任意一级结构体对象
 //  @return map[string]any 对应的map
 //  @return error 异常错误
 //
-func StructToMap(in interface{}) (map[string]any, error) {
+func MapFromStruct(in interface{}) (map[string]any, error) {
 	v := reflect.ValueOf(in)
 	if v.Kind() == reflect.Ptr {
 		v = v.Elem()

@@ -182,7 +182,7 @@ func SliceUnique[T comparable](in []T) []T {
 	for _, ent := range in {
 		keys[ent] = struct{}{}
 	}
-	return GetMapKeys(keys)
+	return MapKeys(keys)
 }
 
 // IsSubSlice [T comparable]
