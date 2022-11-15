@@ -23,8 +23,15 @@ import (
 //  @param v
 //  @return int
 func Any2Int(v any) int {
-	t := Any2Int64(v)
-	return int(t)
+	return int(Any2Int64(v))
+}
+
+// Any2Int32
+//  @Description: 任意类型转换成int32
+//  @param v
+//  @return int32
+func Any2Int32(v any) int32 {
+	return int32(Any2Int64(v))
 }
 
 // Any2Uint64
@@ -32,8 +39,15 @@ func Any2Int(v any) int {
 //  @param v
 //  @return uint64
 func Any2Uint64(v any) uint64 {
-	t := Any2Int64(v)
-	return uint64(t)
+	return uint64(Any2Int64(v))
+}
+
+// Any2Uint32
+//  @Description: 任意类型转换成unit32
+//  @param v
+//  @return uint32
+func Any2Uint32(v any) uint32 {
+	return uint32(Any2Int64(v))
 }
 
 // Any2Int64
@@ -78,6 +92,14 @@ func Any2Float64(v any) float64 {
 		return float64(reflect.ValueOf(d).Uint())
 	}
 	return 0
+}
+
+// Any2Float32
+//  @Description: 任意类型转换成float
+//  @param v
+//  @return float32
+func Any2Float32(v any) float32 {
+	return float32(Any2Float64(v))
 }
 
 // Any2Bool
