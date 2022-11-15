@@ -44,6 +44,102 @@ func Slice2Any[T comparable](in []T) []any {
 	return out
 }
 
+// SliceStr2Int [T string]
+//  @Description: 字符串切片转成int切片
+//  @param in
+//  @return []int64
+func SliceStr2Int[T string](in []T) []int {
+	out := make([]int, len(in))
+	for i, it := range in {
+		out[i] = Any2Int(it)
+	}
+	return out
+}
+
+// SliceStr2Int64 [T string]
+//  @Description: 字符串切片转成int64切片
+//  @param in
+//  @return []int64
+func SliceStr2Int64[T string](in []T) []int64 {
+	out := make([]int64, len(in))
+	for i, it := range in {
+		out[i] = Any2Int64(it)
+	}
+	return out
+}
+
+// SliceStr2Uint64 [T string]
+//  @Description: 字符串切片转成uint64切片
+//  @param in
+//  @return []int64
+func SliceStr2Uint64[T string](in []T) []uint64 {
+	out := make([]uint64, len(in))
+	for i, it := range in {
+		out[i] = Any2Uint64(it)
+	}
+	return out
+}
+
+// SliceStr2Int32 [T string]
+//  @Description: 字符串切片转成int32切片
+//  @param in
+//  @return []int64
+func SliceStr2Int32[T string](in []T) []int32 {
+	out := make([]int32, len(in))
+	for i, it := range in {
+		out[i] = Any2Int32(it)
+	}
+	return out
+}
+
+// SliceStr2Uint32 [T string]
+//  @Description: 字符串切片转成uint32切片
+//  @param in
+//  @return []int64
+func SliceStr2Uint32[T string](in []T) []uint32 {
+	out := make([]uint32, len(in))
+	for i, it := range in {
+		out[i] = Any2Uint32(it)
+	}
+	return out
+}
+
+// SliceStr2Float64 [T string]
+//  @Description: 字符串切片转成float64切片
+//  @param in
+//  @return []float64
+func SliceStr2Float64[T string](in []T) []float64 {
+	out := make([]float64, len(in))
+	for i, it := range in {
+		out[i] = Any2Float64(it)
+	}
+	return out
+}
+
+// SliceStr2Float32 [T string]
+//  @Description: 字符串切片转成float32切片
+//  @param in
+//  @return []float64
+func SliceStr2Float32[T string](in []T) []float32 {
+	out := make([]float32, len(in))
+	for i, it := range in {
+		out[i] = Any2Float32(it)
+	}
+	return out
+}
+
+// SliceStr2Bool [T string]
+//  @Description: 字符串切片转成bool切片
+//  @param in
+//  @return []bool
+func SliceStr2Bool[T string](in []T) []bool {
+	out := make([]bool, len(in))
+	for i, it := range in {
+		out[i] = Any2Bool(it)
+	}
+	return out
+}
+
 // SliceNum2Str [T Number]
 //  @Description: 将数值切片转换成字符串切片
 //  @param in []T
