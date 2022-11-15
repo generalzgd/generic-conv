@@ -17,11 +17,11 @@ import (
 	"reflect"
 )
 
-// Map2KvPairs [T1, T2 comparable]
+// MapKvPairs [T1, T2 comparable]
 //  @Description: 转换map为键值对
 //  @param in
 //  @return []any
-func Map2KvPairs[T1, T2 comparable](in map[T1]T2) []any {
+func MapKvPairs[T1, T2 comparable](in map[T1]T2) []any {
 	out := make([]any, 0, len(in)*2)
 	for k, v := range in {
 		out = append(out, k, v)
@@ -37,6 +37,18 @@ func MapKeys[T1, T2 comparable](in map[T1]T2) []T1 {
 	out := make([]T1, 0, len(in))
 	for k := range in {
 		out = append(out, k)
+	}
+	return out
+}
+
+// MapValues [T1, T2 comparable]
+//  @Description: 提取map的值
+//  @param in
+//  @return []T2
+func MapValues[T1, T2 comparable](in map[T1]T2) []T2 {
+	out := make([]T2, 0, len(in))
+	for _, v := range in {
+		out = append(out, v)
 	}
 	return out
 }

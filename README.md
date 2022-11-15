@@ -12,8 +12,9 @@
 - Any2Str
 
 ## map数据类型转换
-- Map2KvPairs
+- MapKvPairs
 - MapKeys
+- MapValues
 - MapMerge
 - MapVal2Int
 - MapVal2Str
