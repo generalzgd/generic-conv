@@ -18,10 +18,10 @@ import (
 
 func TestMap2KvPairs(t *testing.T) {
 
-	got := Map2KvPairs(map[string]int{"a": 1})
+	got := MapKvPairs(map[string]int{"a": 1})
 	t.Logf("got map kv pairs: %v", got)
 
-	got = Map2KvPairs(map[int]float32{100: 1.0})
+	got = MapKvPairs(map[int]float32{100: 1.0})
 	t.Logf("got map kv pairs: %v", got)
 }
 
