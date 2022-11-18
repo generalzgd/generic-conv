@@ -22,6 +22,7 @@
 - MapVal2Str
 - MapVal2Any
 - MapFromStruct
+- MapContainKey
 
 ## Slice数据类型转换
 - Slice2Any

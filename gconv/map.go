@@ -173,3 +173,16 @@ func MapFromStruct(in interface{}) (map[string]any, error) {
 	}
 	return out, nil
 }
+
+// MapContainKey [T1, T2 comparable]
+//  @Description: 是否包含目标key
+//  @param tank
+//  @param tar
+//  @return bool
+func MapContainKey[T1, T2 comparable](tank map[T1]T1, key T1) bool {
+	if len(tank) < 1 {
+		return false
+	}
+	_, ok := tank[key]
+	return ok
+}
