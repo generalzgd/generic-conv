@@ -12,7 +12,9 @@
 
 package gconv
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Integer
 //  @Description: 整数定义
@@ -45,7 +47,7 @@ func Slice2Any[T comparable](in []T) []any {
 }
 
 // Slice2Map [T comparable]
-//  @Description: 切片转map
+//  @Description: 切片转map(空值)
 //  @param in
 //  @return map[T]struct{}
 func Slice2Map[T comparable](in []T) map[T]struct{} {
