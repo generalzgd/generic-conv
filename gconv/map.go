@@ -14,6 +14,7 @@ package gconv
 
 import (
 	"fmt"
+	"math"
 	"reflect"
 )
 
@@ -53,23 +54,56 @@ func MapValues[T1, T2 comparable](in map[T1]T2) []T2 {
 	return out
 }
 
-// MapMerge [T1, T2 comparable]
+// MapUnion [T1, T2 comparable]
 //  @Description: map合并操作，如果存在同key,不同value则会被后者覆盖
-//  @param in
-//  @param others
+//  @param ins
 //  @return map[T1]T2
-func MapMerge[T1, T2 comparable](in map[T1]T2, others ...map[T1]T2) map[T1]T2 {
-	if len(in) < 1 {
+func MapUnion[T1, T2 comparable](ins ...map[T1]T2) map[T1]T2 {
+	if len(ins) < 1 {
 		return map[T1]T2{}
 	}
-
-	for _, other := range others {
-		for k, v := range other {
-			in[k] = v
-		}
+	count := 0
+	for _, in := range ins {
+		count += len(in)
 	}
 
-	return in
+	out := make(map[T1]T2, count)
+	for _, other := range ins {
+		for k, v := range other {
+			out[k] = v
+		}
+	}
+	return out
+}
+
+// MapIntersect [T1, T2 comparable]
+//  @Description: map交集操作，返回交集的key列表。在两个map中都存在的key
+//  @param first
+//  @param second
+//  @return []T1
+func MapIntersect[T1, T2 comparable](first, second map[T1]T2) []T1 {
+	out := make([]T1, 0, int(math.Max(float64(len(first)), float64(len(second)))))
+	for k := range first {
+		if _, ok := second[k]; ok {
+			out = append(out, k)
+		}
+	}
+	return out
+}
+
+// MapExcept [T1, T2 comparable]
+//  @Description: map差集操作，返回差集的key列表。key在第一个map中，且不在第二个map中。
+//  @param first
+//  @param second
+//  @return []T1
+func MapExcept[T1, T2 comparable](first, second map[T1]T2) []T1 {
+	out := make([]T1, 0, int(math.Max(float64(len(first)), float64(len(second)))))
+	for k := range first {
+		if _, ok := second[k]; !ok {
+			out = append(out, k)
+		}
+	}
+	return out
 }
 
 // MapVal2Int [T1, T2 comparable]

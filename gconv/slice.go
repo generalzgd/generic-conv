@@ -44,6 +44,18 @@ func Slice2Any[T comparable](in []T) []any {
 	return out
 }
 
+// Slice2Map [T comparable]
+//  @Description: 切片转map
+//  @param in
+//  @return map[T]struct{}
+func Slice2Map[T comparable](in []T) map[T]struct{} {
+	out := make(map[T]struct{}, len(in))
+	for _, it := range in {
+		out[it] = struct{}{}
+	}
+	return out
+}
+
 // SliceStr2Int [T string]
 //  @Description: 字符串切片转成int切片
 //  @param in
@@ -247,26 +259,50 @@ func SliceMinus[T comparable](in1, in2 []T) []T {
 	return out
 }
 
-// SliceMerge [T comparable]
+// SliceUnion [T comparable]
 //  @Description: 切片合并，且保证唯一
 //  @param ins
 //  @return []T
-func SliceMerge[T comparable](ins ...[]T) []T {
+func SliceUnion[T comparable](ins ...[]T) []T {
 	if len(ins) < 1 {
 		return nil
 	}
-	tmp := map[T]struct{}{}
+	count := 0
+	for _, in := range ins {
+		count += len(in)
+	}
+	tmp := make(map[T]struct{}, count)
 	for _, in := range ins {
 		for _, it := range in {
 			tmp[it] = struct{}{}
 		}
 	}
 	//
-	out := make([]T, 0, len(tmp))
-	for k := range tmp {
-		out = append(out, k)
-	}
-	return out
+	return MapKeys(tmp)
+}
+
+// SliceIntersect [T comparable]
+//  @Description:  切片交集。返回在两个切片中均存在的列表
+//  @param first
+//  @param second
+//  @return []T
+func SliceIntersect[T comparable](first, second []T) []T {
+	f := Slice2Map(first)
+	s := Slice2Map(second)
+	//
+	return MapIntersect(f, s)
+}
+
+// SliceExcept [T comparable]
+//  @Description: 切片差集。返回在第一个切片中存在，第二个切片中不存在的列表
+//  @param first
+//  @param second
+//  @return []T
+func SliceExcept[T comparable](first, second []T) []T {
+	f := Slice2Map(first)
+	s := Slice2Map(second)
+	//
+	return MapExcept(f, s)
 }
 
 // SliceUnique [T comparable]

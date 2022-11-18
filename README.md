@@ -15,7 +15,9 @@
 - MapKvPairs
 - MapKeys
 - MapValues
-- MapMerge
+- MapUnion
+- MapIntersect
+- MapExcept
 - MapVal2Int
 - MapVal2Str
 - MapVal2Any
@@ -23,6 +25,7 @@
 
 ## Slice数据类型转换
 - Slice2Any
+- Slice2Map
 - SliceNum2Str
 - SliceNum2Int
 - SliceNum2Uint
@@ -31,6 +34,8 @@
 - SliceNum2Int64
 - SliceNum2Uint64
 - SliceMinus
-- SliceMerge
+- SliceUnion
+- SliceIntersect
+- SliceExcept
 - SliceUnique
 - IsSubSlice
