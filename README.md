@@ -37,4 +37,4 @@
 - SliceIntersect
 - SliceExcept
 - SliceUnique
-- IsSubSlice
+- SliceContain

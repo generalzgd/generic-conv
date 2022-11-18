@@ -294,26 +294,16 @@ func SliceUnique[T comparable](in []T) []T {
 	return MapKeys(keys)
 }
 
-// IsSubSlice [T comparable]
-//  @Description: 切片子集校验
-//  @param sub
+// SliceContain [T comparable]
+//  @Description: 切片包含校验
 //  @param tank
+//  @param tar
 //  @return bool
-func IsSubSlice[T comparable](sub, tank []T) bool {
-	if sub == nil {
-		return true
-	}
+func SliceContain[T comparable](tank []T, tar T) bool {
 	if tank == nil {
 		return false
 	}
-	tmp := make(map[T]struct{}, len(tank))
-	for _, v := range tank {
-		tmp[v] = struct{}{}
-	}
-	for _, v := range sub {
-		if _, ok := tmp[v]; !ok {
-			return false
-		}
-	}
-	return true
+	tmp := Slice2Map(tank)
+	_, ok := tmp[tar]
+	return ok
 }
