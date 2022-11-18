@@ -236,29 +236,6 @@ func SliceNum2Uint64[T Number](in []T) []uint64 {
 	return out
 }
 
-// SliceMinus [T comparable]
-//  @Description: 切片减法
-//  @param in1
-//  @param in2
-//  @return []T
-func SliceMinus[T comparable](in1, in2 []T) []T {
-	if len(in1) < 1 || len(in2) < 2 {
-		return in1
-	}
-	tmp := make(map[T]struct{}, len(in1))
-	for _, it := range in1 {
-		tmp[it] = struct{}{}
-	}
-	for _, it := range in2 {
-		delete(tmp, it)
-	}
-	out := make([]T, 0, len(tmp))
-	for k := range tmp {
-		out = append(out, k)
-	}
-	return out
-}
-
 // SliceUnion [T comparable]
 //  @Description: 切片合并，且保证唯一
 //  @param ins

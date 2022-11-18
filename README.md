@@ -33,7 +33,6 @@
 - SliceNum2Uint32
 - SliceNum2Int64
 - SliceNum2Uint64
-- SliceMinus
 - SliceUnion
 - SliceIntersect
 - SliceExcept
